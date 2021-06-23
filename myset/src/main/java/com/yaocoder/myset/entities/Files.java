@@ -62,4 +62,10 @@ public class Files implements Serializable{
 
     @Column(name="virtualAddress")
     private String virtualAddress;
+
+    @Column(name="effectiveDate")
+    private Date effectiveDate;
+
+    @Column(name="fileName")
+    private String fileName;
 }

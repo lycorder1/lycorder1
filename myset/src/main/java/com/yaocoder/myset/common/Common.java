@@ -1,6 +1,7 @@
 package com.yaocoder.myset.common;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Random;
 
 public class Common {
 
@@ -31,5 +32,20 @@ public class Common {
             }
         }
         return ip;
+    }
+
+
+    public static String getRandomUid(int num){
+        String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//        str+= str.toLowerCase();
+        str +="0123456789";
+        char ch = str.charAt(str.length()-1);
+        System.out.println(ch);
+        StringBuffer sb = new StringBuffer(num);
+        for (int i = 0; i <num ; i++) {
+            char ch2 = str.charAt(new Random().nextInt(str.length()));
+            sb.append(ch2);
+        }
+       return sb.toString();
     }
 }
