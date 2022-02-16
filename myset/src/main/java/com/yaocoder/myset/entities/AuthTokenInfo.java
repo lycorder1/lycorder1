@@ -1,6 +1,5 @@
-package com.yaocoder.myset.entitiesMysql;
+package com.yaocoder.myset.entities;
 
-//import org.hibernate.annotations.Proxy;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,10 +10,11 @@ import java.util.Date;
 
 
 @Entity  //代表此类为一个表的映射entity类
-@Table(name="user")  //设置对应的表名
+//@Table(name="fileRecord",schema = "dbo")  //设置对应的表名
+@Table(name="authTokenInfo")  //设置对应的表名
 @Getter
 @Setter
-public class User implements Serializable{
+public class AuthTokenInfo implements Serializable{
     /**
      * 功能描述:序列化时候的唯一性，相应的get和set方法已经省略。
      */
@@ -29,38 +29,31 @@ public class User implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    /** 名称*/
+    /** 数字,具有唯一性 */
     //nullable - 是否可以为null,默认为true   unique - 是否唯一,默认为false
-    @Column(name="name")
-    private String name;
-
-    /** 别名*/
-    //nullable - 是否可以为null,默认为true   unique - 是否唯一,默认为false
-    @Column(name="nickName")
-    private String nickName;
-
-    /** 密钥 */
-    @Column(name="password")
-    private String password;
+    @Column(name="Token")
+    private String token;
 
     /** 部门电话 */
-    @Column(name="des")
-    private String des;
+    @Column(name="expressTime")
+    private Date expressTime;
 
-    /** Eamil */
-    @Column(name="Eamil")
-    private String eamil;
+    @Column(name="ExpressDate")
+    private String expressDate;
 
-    /** 是否删除 */
-    @Column(name="isRec")
-    private boolean isRec;
+    @Column(name="AuthAppID")
+    private Integer authAppID;
 
-    /** 创建日期 */
+    @Column(name="OpenID")
+    private Integer openID;
+
     @Column(name="createDate")
     private Date createDate;
 
-    /** 创建日期 */
-    @Column(name="profilePic")
-    private String profilePic;
+    @Column(name="moddifyDate")
+    private Date moddifyDate;
+
+    @Column(name="isRec")
+    private boolean isRec;
 
 }

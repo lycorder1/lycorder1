@@ -3,7 +3,6 @@ package com.yaocoder.myset.entities;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,10 +11,10 @@ import java.util.Date;
 
 @Entity  //代表此类为一个表的映射entity类
 //@Table(name="fileRecord",schema = "dbo")  //设置对应的表名
-@Table(name="fileRecord")  //设置对应的表名
+@Table(name="authAppInfo")  //设置对应的表名
 @Getter
 @Setter
-public class Files implements Serializable{
+public class AuthAppInfo implements Serializable{
     /**
      * 功能描述:序列化时候的唯一性，相应的get和set方法已经省略。
      */
@@ -32,21 +31,21 @@ public class Files implements Serializable{
 
     /** 数字,具有唯一性 */
     //nullable - 是否可以为null,默认为true   unique - 是否唯一,默认为false
-    @Column(name="des")
-    private String des;
+    @Column(name="Name")
+    private String name;
 
     /** 部门电话 */
-    @Column(name="path")
-    private String path;
+    @Column(name="Des")
+    private String des;
 
-    @Column(name="downCode")
-    private String downCode;
+    @Column(name="AppCode")
+    private String appCode;
 
-    @Column(name="downCount")
-    private short downCount;
+    @Column(name="AppSecret")
+    private short appSecret;
 
-    @Column(name="uid")
-    private String uid;
+    @Column(name="RedirectUrl")
+    private String redirectUrl;
 
     @Column(name="createDate")
     private Date createDate;
@@ -57,15 +56,7 @@ public class Files implements Serializable{
     @Column(name="isRec")
     private boolean isRec;
 
-    @Column(name="oid")
-    private String oid;
+    @Column(name="Salt")
+    private String salt;
 
-    @Column(name="virtualAddress")
-    private String virtualAddress;
-
-    @Column(name="effectiveDate")
-    private Date effectiveDate;
-
-    @Column(name="fileName")
-    private String fileName;
 }

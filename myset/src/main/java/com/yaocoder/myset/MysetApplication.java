@@ -1,16 +1,42 @@
 package com.yaocoder.myset;
 
+import com.yaocoder.myset.CustomConfiguration.SpringUtil;
+import com.yaocoder.myset.common.SessionCommon;
+import com.yaocoder.myset.netty.WebSocketServer;
+import com.yaocoder.myset.netty1.NettyServer;
 import org.apache.coyote.http11.AbstractHttp11Protocol;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+import java.net.InetSocketAddress;
 
 //@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+//@Import({SpringUtil.class,SessionCommon.class})
+//@ComponentScan("com.yaocoder.myset")
+@Import({SpringUtil.class})
 @SpringBootApplication
-public class MysetApplication {
+@EnableScheduling
+public class MysetApplication implements CommandLineRunner {
+//public class MysetApplication{
+
+    @Value("${netty.port}")
+    private int port;
+
+    @Value("${netty.url}")
+    private String url;
+
+    @Autowired
+    private WebSocketServer server;
+
     public static void main(String[] args) {
         SpringApplication.run(MysetApplication.class, args);
     }
@@ -27,6 +53,12 @@ public class MysetApplication {
         return tomcat;
     }
 
+    @Override
+    public void run(String... args) throws Exception {
+        InetSocketAddress address = new InetSocketAddress(url,port);
+        System.out.println("run  .... . ... "+url);
+        server.start(address);
+    }
 
 
 //    @Override

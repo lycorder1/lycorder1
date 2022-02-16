@@ -1,6 +1,5 @@
-package com.yaocoder.myset.entitiesMysql;
+package com.yaocoder.myset.entities;
 
-//import org.hibernate.annotations.Proxy;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,10 +10,11 @@ import java.util.Date;
 
 
 @Entity  //代表此类为一个表的映射entity类
-@Table(name="user")  //设置对应的表名
+//@Table(name="fileRecord",schema = "dbo")  //设置对应的表名
+@Table(name="ChatGroup")  //设置对应的表名
 @Getter
 @Setter
-public class User implements Serializable{
+public class ChatGroup implements Serializable{
     /**
      * 功能描述:序列化时候的唯一性，相应的get和set方法已经省略。
      */
@@ -29,38 +29,42 @@ public class User implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    /** 名称*/
+    /** 数字,具有唯一性 */
     //nullable - 是否可以为null,默认为true   unique - 是否唯一,默认为false
-    @Column(name="name")
-    private String name;
-
-    /** 别名*/
-    //nullable - 是否可以为null,默认为true   unique - 是否唯一,默认为false
-    @Column(name="nickName")
-    private String nickName;
-
-    /** 密钥 */
-    @Column(name="password")
-    private String password;
-
-    /** 部门电话 */
     @Column(name="des")
     private String des;
 
-    /** Eamil */
-    @Column(name="Eamil")
-    private String eamil;
+    @Column(name="title")
+    private String title;
 
-    /** 是否删除 */
-    @Column(name="isRec")
-    private boolean isRec;
-
-    /** 创建日期 */
     @Column(name="createDate")
     private Date createDate;
 
-    /** 创建日期 */
-    @Column(name="profilePic")
-    private String profilePic;
+    @Column(name="moddifyDate")
+    private Date moddifyDate;
 
+    @Column(name="isRec")
+    private boolean isRec;
+
+    @Column(name="userId")
+    private int userId;
+
+    @Column(name="masterId")
+    private int masterId;
+
+    @Column(name="manager1Id")
+    private int manager1Id;
+
+    @Column(name="manager2Id")
+    private int manager2Id;
+
+    @Column(name="manager3Id")
+    private int manager3Id;
+
+    //0对单个用户 1 对群组
+    @Column(name="type")
+    private int type;
+
+    @Column(name="count")
+    private int count;
 }

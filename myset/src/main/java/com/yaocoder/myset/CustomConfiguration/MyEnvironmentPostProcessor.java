@@ -25,6 +25,7 @@ public class MyEnvironmentPostProcessor implements EnvironmentPostProcessor {
         String[] profiles = {
                 "filePath.properties",
                 "custorm.properties",
+                "wxGzh.properties",
                 "application.yml",
         };
 

@@ -39,6 +39,11 @@
 #    #配置连接在连接池的最小生存时间
 #    remove-abandoned-on-maintenance: 200000
 
+netty:
+  port: 8999
+#  port: 8998
+  url: 127.0.0.1
+
 spring:
   jpa:
     #配置数据库类型
@@ -78,7 +83,7 @@ spring:
     #sqlserver数据源配置
     main:
       jdbc-url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=myDB
-      username: sa
+      username: yao
       password: '000000'
       driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
       database: sql_server
@@ -109,6 +114,13 @@ application:
   #文件上传路径
   profile: D:/projectData/UIData
 
+http_pool:
+  max_total: 200
+  default_max_per_route: 100
+  connect_timeout: 5000
+  connection_request_timeout: 1000
+  socket_timeout: 65000
+  validate_after_inactivity: 2000
 
 
 

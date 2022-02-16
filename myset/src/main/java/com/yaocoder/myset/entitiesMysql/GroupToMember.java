@@ -11,10 +11,10 @@ import java.util.Date;
 
 
 @Entity  //代表此类为一个表的映射entity类
-@Table(name="user")  //设置对应的表名
+@Table(name="GroupToMember")  //设置对应的表名
 @Getter
 @Setter
-public class User implements Serializable{
+public class GroupToMember implements Serializable{
     /**
      * 功能描述:序列化时候的唯一性，相应的get和set方法已经省略。
      */
@@ -34,22 +34,21 @@ public class User implements Serializable{
     @Column(name="name")
     private String name;
 
-    /** 别名*/
-    //nullable - 是否可以为null,默认为true   unique - 是否唯一,默认为false
-    @Column(name="nickName")
-    private String nickName;
+    /** 群Id */
+    @Column(name="groupId")
+    private Integer groupId;
 
-    /** 密钥 */
-    @Column(name="password")
-    private String password;
+    /** 类别 */
+    @Column(name="type")
+    private Integer type;
 
-    /** 部门电话 */
-    @Column(name="des")
-    private String des;
+    /** 备注 */
+    @Column(name="UserID")
+    private Integer UserID;
 
-    /** Eamil */
-    @Column(name="Eamil")
-    private String eamil;
+    /** 是否删除 */
+    @Column(name="remark")
+    private String remark;
 
     /** 是否删除 */
     @Column(name="isRec")
@@ -58,9 +57,5 @@ public class User implements Serializable{
     /** 创建日期 */
     @Column(name="createDate")
     private Date createDate;
-
-    /** 创建日期 */
-    @Column(name="profilePic")
-    private String profilePic;
 
 }
